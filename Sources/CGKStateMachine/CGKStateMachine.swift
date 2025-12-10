@@ -14,7 +14,7 @@ open class CGKStateMachine: GKStateMachine, StatePublishing {
     // MARK: Internal Properties
 
     /// Enables / disables logging output to both *Xcode's Console* and the macOS *Console app*. `true` by default.
-    internal static var isLoggingEnabled: Bool = true
+    @MainActor internal static var isLoggingEnabled: Bool = true
     
     // MARK: - Lifecyce
 

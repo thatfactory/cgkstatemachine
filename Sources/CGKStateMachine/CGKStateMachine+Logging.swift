@@ -21,13 +21,13 @@ public extension CGKStateMachine {
     /// in the *macOS Console app*.
     ///
     /// In the **macOS Console app**, you can filter CGKStateMachine's output by
-    /// `SUBSYSTEM`: `com.backslash-f.CGKStateMachine`.
-    func enableLogging() {
+    /// `SUBSYSTEM`: `com.thatfactory.CGKStateMachine`.
+    @MainActor func enableLogging() {
         CGKStateMachine.isLoggingEnabled = true
     }
 
     /// Disables logging information via `AppLogger`.
-    func disableLogging() {
+    @MainActor func disableLogging() {
         CGKStateMachine.isLoggingEnabled = false
     }
 }
@@ -41,16 +41,16 @@ internal extension CGKStateMachine {
     /// - Parameters:
     ///   - string: The `String` to be logged.
     ///   - category: A member of the `CGKStateMachineLoggingCategory` enum.
-    static func log(_ string: String, category: CGKStateMachineLoggingCategory) {
+    @MainActor static func log(_ string: String, category: CGKStateMachineLoggingCategory) {
         guard isLoggingEnabled else {
             return
         }
-        let subsystem = "com.backslash-f.CGKStateMachine"
+        let subsystem = "com.thatfactory.CGKStateMachine"
         let logger = AppLogger(subsystem: subsystem, category: category.rawValue)
         logger.log(string)
     }
 
-    static func logError(_ error: String) {
+    @MainActor static func logError(_ error: String) {
         log(error, category: .error)
     }
 }

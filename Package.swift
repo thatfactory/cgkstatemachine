@@ -1,4 +1,4 @@
-// swift-tools-version:5.5
+// swift-tools-version:6.2
 
 import PackageDescription
 
@@ -14,20 +14,27 @@ let package = Package(
         .library(
             name: "CGKStateMachine",
             targets: ["CGKStateMachine"]
-        ),
+        )
     ],
     dependencies: [
-        .package(name: "AppLogger", url: "https://github.com/backslash-f/applogger", from: "1.0.0")
+        .package(
+            url: "https://github.com/thatfactory/applogger",
+            from: "0.1.0"
+        )
     ],
     targets: [
         .target(
             name: "CGKStateMachine",
-            dependencies: ["AppLogger"]
+            dependencies: [
+                .product(
+                    name: "AppLogger",
+                    package: "applogger"
+                )
+            ]
         ),
         .testTarget(
             name: "CGKStateMachineTests",
             dependencies: ["CGKStateMachine"]
         )
-    ],
-    swiftLanguageVersions: [.v5]
+    ]
 )

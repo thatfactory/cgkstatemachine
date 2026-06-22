@@ -1,14 +1,14 @@
-// swift-tools-version:6.2
+// swift-tools-version:6.4
 
 import PackageDescription
 
 let package = Package(
     name: "CGKStateMachine",
     platforms: [
-        .iOS(.v14),
-        .macOS(.v11),
-        .tvOS(.v14),
-        .watchOS(.v7)
+        .iOS(.v27),
+        .macOS(.v27),
+        .tvOS(.v27),
+        .watchOS(.v27)
     ],
     products: [
         .library(

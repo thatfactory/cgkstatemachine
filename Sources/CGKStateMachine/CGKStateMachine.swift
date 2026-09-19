@@ -1,9 +1,8 @@
-import Combine
-import GameplayKit
+public import Combine
+public import GameplayKit
 
 /// A custom `GKStateMachine` that publishes `GKState` changes.
 open class CGKStateMachine: GKStateMachine, StatePublishing {
-    
     // MARK: - Public Properties
 
     /// Subscribe to this publisher to keep track of `GKState` changes.
@@ -15,7 +14,7 @@ open class CGKStateMachine: GKStateMachine, StatePublishing {
 
     /// Enables / disables logging output to both *Xcode's Console* and the macOS *Console app*. `true` by default.
     @MainActor internal static var isLoggingEnabled: Bool = true
-    
+
     // MARK: - Lifecyce
 
     /// Calls `GKStateMachine.init(states:)` passing in the given array of `CGKState`.
@@ -24,13 +23,13 @@ open class CGKStateMachine: GKStateMachine, StatePublishing {
     public init(states: [CGKState]) {
         super.init(states: states)
     }
-    
+
     @available(*, unavailable)
     override private init(states: [GKState]) {
         let errorMessage = """
-            init(states: [GKState]) has not been implemented.
-            Use init(states: [CGKState]) instead.
-        """
+                init(states: [GKState]) has not been implemented.
+                Use init(states: [CGKState]) instead.
+            """
         fatalError(errorMessage)
     }
 }

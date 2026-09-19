@@ -5,14 +5,13 @@ import Foundation
 ///
 /// Refer to: https://developer.apple.com/documentation/os/logging
 public enum CGKStateMachineLoggingCategory: String {
-    case error      = "CGKStateMachine_Error"
-    case lifecycle  = "CGKStateMachine_Lifecycle"
+    case error = "CGKStateMachine_Error"
+    case lifecycle = "CGKStateMachine_Lifecycle"
 }
 
 // MARK: - Interface
 
-public extension CGKStateMachine {
-
+extension CGKStateMachine {
     // MARK: Enable / Disable Logging
 
     /// Enables logging information via `AppLogger`.
@@ -22,20 +21,19 @@ public extension CGKStateMachine {
     ///
     /// In the **macOS Console app**, you can filter CGKStateMachine's output by
     /// `SUBSYSTEM`: `com.thatfactory.CGKStateMachine`.
-    @MainActor func enableLogging() {
+    @MainActor public func enableLogging() {
         CGKStateMachine.isLoggingEnabled = true
     }
 
     /// Disables logging information via `AppLogger`.
-    @MainActor func disableLogging() {
+    @MainActor public func disableLogging() {
         CGKStateMachine.isLoggingEnabled = false
     }
 }
 
 // MARK: - Internal
 
-internal extension CGKStateMachine {
-
+extension CGKStateMachine {
     /// Logs the given `String` information via `AppLogger`.
     ///
     /// - Parameters:

@@ -1,10 +1,10 @@
 import Combine
 import GameplayKit
 import XCTest
+
 @testable import CGKStateMachine
 
 final class CGKStateMachineTests: XCTestCase {
-
     class FirstState: CGKState {}
     class SecondState: CGKState {}
 
@@ -12,7 +12,7 @@ final class CGKStateMachineTests: XCTestCase {
         CGKStateMachine(
             states: [
                 FirstState(),
-                SecondState()
+                SecondState(),
             ]
         )
     }()
@@ -45,8 +45,9 @@ final class CGKStateMachineTests: XCTestCase {
 
         let publishedStatesExpectation = XCTestExpectation()
         if publishedStates[0] is FirstState,
-           publishedStates[1] is SecondState,
-           publishedStates[2] is FirstState {
+            publishedStates[1] is SecondState,
+            publishedStates[2] is FirstState
+        {
             publishedStatesExpectation.fulfill()
         } else {
             XCTFail("Expected states weren't published")
